@@ -14,11 +14,13 @@ public class LoginFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
-        if(request.getSession(false)!=null){
-            filterChain.doFilter(servletRequest,servletResponse);
+        if(request.getSession(false) ==null){
+            HttpServletResponse response = (HttpServletResponse) servletResponse;
+            response.sendRedirect("/login/login");
+            return;
         }
-        HttpServletResponse response = (HttpServletResponse) servletResponse;
-        response.sendRedirect("/login/login");
+
+        filterChain.doFilter(servletRequest,servletResponse);
     }
 
     @Override

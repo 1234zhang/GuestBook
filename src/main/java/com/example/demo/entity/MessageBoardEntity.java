@@ -12,6 +12,7 @@ public class MessageBoardEntity {
     public String message;
     public int star;
     public String name;
+    public String secret;
     public List<MessageBoardEntity> childContent = new ArrayList<>();
 
 }

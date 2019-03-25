@@ -14,7 +14,11 @@ public class TestController {
     @Autowired
     MessageBoardService messageBoardService;
     @RequestMapping("/test")
-    public boolean test(int id){
-        return messageBoardService.addStar(id);
+    public boolean test(int pid,String message,String secret){
+        return messageBoardService.addMessage(pid,message,"sdf",null);
+    }
+    @RequestMapping("/get")
+    public List<MessageBoardEntity> get(){
+        return messageBoardService.getChildMessage(0,"abc");
     }
 }
